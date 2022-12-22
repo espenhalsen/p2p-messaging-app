@@ -1,10 +1,11 @@
-import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 
 
 
 const firebaseConfig = {
+
   apiKey: "AIzaSyCiTroQLBPKRNbMMJUf5jCeEZyfD2RefpI",
 
   authDomain: "p2p-messaging-app.firebaseapp.com",
@@ -19,10 +20,11 @@ const firebaseConfig = {
 
 };
 
-firebase.initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
-export const db = firebase.firestore();
+const app = initializeApp(firebaseConfig)
+
+export const auth = app.auth();
+export const db = app.firestore();
 
 export async function generateUserDocument(user, additionalData) {
   if (!user) return;
